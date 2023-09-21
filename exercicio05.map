@@ -1,0 +1,93 @@
+#####################################################################
+# INSTITUTO FEDERAL CATARINENSE - CAMPUS Camboriú
+# Bacharelado em Sistemas de Informação
+# Disciplina: Programação Avançada em WebMapas
+# Doscente: André Fabiano de Moraes
+# Discente: Gabriel Henrique de Oliveira
+# Data: 01/09/2023
+#####################################################################
+# Exercicio 05 - Implementação do MapFile para colocação de rótulos.
+#####################################################################
+
+MAP
+   # EXTEND -81.689356 -34.901490 -32.377917 6.231303
+   EXTENT 388107.634400379 5203120.88405952 500896.339019834 5310243.30613897
+   SHAPEPATH /var/www/html/bsi21/data
+   FONTSET /var/www/html/bsi21/fontes/fonteset.txt
+   SIZE 800 600
+
+######### Primeira Camada ##### Área de Cobertura
+   LAYER
+      NAME ctybdpy2
+      TYPE polygon
+      DATA ctybdpy2
+      STATUS default
+
+      CLASS
+         NAME "workshop"
+         OUTLINECOLOR 0 0 0
+         #COLOR 255 255 192
+      END
+   END
+
+######### Segunda Camada ##### Cidades
+   LAYER
+      NAME mcd90py2
+      TYPE polygon
+      DATA mcd90py2
+      STATUS default
+      CLASSITEM "NAME"
+
+      # Pinta e mostra a camada MCD90PY2 na cor laranja
+      CLASS
+         NAME "MCD90PY2"
+         OUTLINECOLOR 255 255 255
+         COLOR 255 127 0
+      END
+   END
+
+######## Terceira Camada ##### Cidades
+   LAYER
+      NAME mcd90py2
+      TYPE polygon
+      DATA mcd90py2
+      STATUS default
+      CLASSITEM "TOTAL"
+
+      # Filtra da camada MCD90PY2 especificamente da coluna NAME os valores e pinta em verde
+      CLASS
+         NAME "TOTAL>=500"
+         COLOR 178 223 138
+         OUTLINECOLOR 255 255 255
+         EXPRESSION ([TOTAL] >= 500)
+      END
+   END
+
+######## Quarta Camada ##### Rótulos
+   LAYER
+      NAME mcd90py2_rotulos
+      TYPE polygon
+      DATA mcd90py2
+      STATUS On
+      LABELITEM "NAME"
+      CLASSITEM "NAME"
+      CLASSGROUP "group1"
+
+      # Filtra da camada MDC90PY2 especificamente da coluna NAME os valores e pinta em verde
+      CLASS
+         NAME "NAME"
+         GROUP "group1"
+         LABEL
+            FORCE ON
+            COLOR 0 250 0
+            OUTLINECOLOR 0 0 0
+            TYPE TRUETYPE
+            FONT Dejavu
+            SIZE 10
+            ANGLE AUTO
+         END
+      END
+   END
+
+END
+

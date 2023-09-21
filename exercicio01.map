@@ -1,0 +1,35 @@
+#####################################################################
+# INSTITUTO FEDERAL CATARINENSE - CAMPUS Camboriú
+# Bacharelado em Sistemas de Informação
+# Disciplina: Programação Avançada em WebMapas
+# Doscente: André Fabiano de Moraes
+# Discente: Gabriel Henrique de Oliveira
+# Data: 01/09/2023
+#####################################################################
+# Exercicio 01 - Escrever o primeiro arquivo .MAP 
+#####################################################################
+
+MAP
+	NAME TESTE
+	STATUS ON
+	# EXTEND -81.689356 -34.901490 -32.377917 6.231303 								# para as reprojeções mapfile
+	EXTENT 388107.634400379 5203120.88405952 500896.339019834 5310243.30613897
+	SHAPEPATH /var/www/html/bsi21/data 												# caminho onde estão os shapefiles
+	SIZE 400 300 																	# tamanho em pixels do mapa (imagem) a ser criado
+	
+	LAYER
+		NAME ctybdpy2																# nome da camada
+		TYPE polygon 																# tipo de representação do dado
+		DATA ctybdpy2 																# nome do dado a ser carregado na layer
+		STATUS default 																# ativação da camada por ser (ON, OFF ou DEFAULT)
+		
+		CLASS
+			NAME workshop	 														# nome da classe que vai ser exibida no mapa
+			STYLE
+				OUTLINECOLOR 0 0 0 													# cor da linha de contorno do dado a ser exibido no mapa
+				COLOR 255 255 192 													# cor de preenchimento do dado a ser exibido no mapa
+			END
+		END 																		# fim da classe
+	END 																			# fim da layer
+	
+END 																				# fim do mapa

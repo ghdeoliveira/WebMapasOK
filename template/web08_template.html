@@ -1,0 +1,41 @@
+<!-- MapServer Template -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8">
+		<title>Primeira Aplicação MapServer</title>
+	</head>
+	<body>
+		<h4> Definindo uma interface de usuário: </h4>
+		<form method="GET" action="[program]" name="mapserv">
+			<table>
+				<tr>
+					<th> Mapas: </th>
+					<th> Controles: </th>
+					<th> Camadas: </th>
+				</tr>
+				<tr>
+					<td>
+						<input name="img" type="image" src="[img]" width="[mapwidth]" height="[mapheight]" border="1" alt="this is the map">
+						<input type="hidden" name="program" value="[program]">
+						<input type="hidden" name="map" value="[map]">
+						<input type="hidden" name="root" value="[root]">
+						<input type="hidden" name="imgext" value="[mapext]">
+						<input type="hidden" name="imgxy" value="[center]">
+						<input type="hidden" name="zoomsize" value="2">
+					</td>
+					<td valign="top" bgcolor="#cdcdcd">
+						<input type="radio" name="zoomdir" value="1" [zoomdir_1_check]> Aproximar <br>
+						<input type="radio" name="zoomdir" value="0" [zoomdir_0_check]> Mover <br>
+						<input type="radio" name="zoomdir" value="-1" [zoomdir_-1_check]> Afastar <br>
+						<input type="submit" value="Atualizar"> <br>
+					</td>
+					<td valign="top" bgcolor="#9ACD32"> Camadas: <br>
+						<input type="checkbox" name="layer" value="drgncimq1942" [drgncimq1942_check]> Imagem de Satélite <br>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</body>
+</html>
+

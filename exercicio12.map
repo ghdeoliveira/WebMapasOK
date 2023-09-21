@@ -1,0 +1,149 @@
+#####################################################################
+# INSTITUTO FEDERAL CATARINENSE - CAMPUS Camboriú
+# Bacharelado em Sistemas de Informação
+# Disciplina: Programação Avançada em WebMapas
+# Doscente: André Fabiano de Moraes
+# Discente: Gabriel Henrique de Oliveira
+# Data: 01/09/2023
+#####################################################################
+# Exercicio 12 - Fazendo consulta textual em um mapa .
+#####################################################################
+
+MAP
+   # EXTEND -81.689356 -34.901490 -32.377917 6.231303
+   EXTENT 388107.634400379 5203120.88405952 500896.339019834 5310243.30613897
+   SHAPEPATH /var/www/html/bsi21/data
+   FONTSET /var/www/html/bsi21/fontes/fonteset.txt
+   SIZE 800 600
+
+QUERYMAP
+   SIZE 300 300
+   STATUS ON
+   STYLE HILITE
+   COLOR 255 0 0
+END
+
+WEB
+   IMAGEPATH "/var/www/html/tmp/ms_tmp"
+   IMAGEURL "/tmp/ms_tmp"
+   TEMPLATE "/var/www/html/bsi21/template/web12_template.html"
+   HEADER "/var/www/html/bsi21/template/header12_template.html"
+   FOOTER "/var/www/html/bsi21/template/footer12_template.html"
+END
+
+PROJECTION
+   "init=epsg:26915"
+END
+
+######## Primeira Camada Raster ##### Área de Cobertura
+   LAYER
+      NAME drgncimq1942
+      DATA drgncimq1942.tif
+      STATUS ON 
+      TYPE RASTER
+      OFFSITE 0 0 0
+      PROCESSING "BANDS=1"
+
+      PROJECTION
+         "init=epsg:26915"
+      END
+   END
+
+######### Segunda Camada ##### Área de Cobertura
+   LAYER
+      NAME ctybdpy2
+      TYPE polygon
+      DATA ctybdpy2
+      STATUS ON
+
+      TEMPLATE "/var/www/html/bsi21/template/ctybdpy2_template.html"
+
+      CLASS
+         NAME "workshop"
+         OUTLINECOLOR 0 0 0
+         #COLOR 255 255 192
+      END
+   END
+
+######### Terceira Camada ##### Cidades
+   LAYER
+      NAME mcd90py2
+      TYPE polygon
+      DATA mcd90py2
+      STATUS ON
+      TRANSPARENCY 40
+      CLASSITEM "NAME"
+
+      TEMPLATE "/var/www/html/bsi21/template/mcd90py2_template.html"
+
+      # Pinta e mostra a camada MCD90PY2 na cor laranja
+      CLASS
+         NAME "MCD90PY2"
+         COLOR 255 127 0
+         OUTLINECOLOR 255 255 255
+      END
+   END
+
+######## Quarta Camada ##### Cidades
+   LAYER
+      NAME mcd90py2
+      TYPE polygon
+      DATA mcd90py2
+      STATUS ON
+      TRANSPARENCY 30
+   END
+
+######## Quinta Camada ##### Rótulos
+   LAYER
+      NAME mcd90py2_rotulos
+      TYPE polygon
+      DATA mcd90py2
+      STATUS On
+      LABELITEM "NAME"
+      CLASSITEM "NAME"
+      CLASSGROUP "group1"
+
+      # Filtra da camada MDC90PY2 especificamente da coluna NAME os valores e pinta em verde
+      CLASS
+         NAME "NAME"
+         GROUP "group1"
+         LABEL
+            FORCE ON
+            COLOR 0 250 0
+            OUTLINECOLOR 0 0 0
+            TYPE TRUETYPE
+            FONT Dejavu
+            SIZE 10
+            ANGLE AUTO
+         END
+      END
+   END
+
+######## Sexta Camada ##### Rodovias
+   LAYER
+      NAME ctyrdln3
+      TYPE LINE
+      DATA ctyrdln3
+      STATUS ON
+      CLASS
+         NAME "ctyrdln3"
+         COLOR 23 131 231
+      END
+   END
+
+
+LEGEND
+   STATUS embed
+   IMAGECOLOR 230 230 230
+   LABEL
+      TYPE TRUETYPE
+      FONT "Dejavu"
+      COLOR 0 0 0
+      ANTIALIAS TRUE
+      SIZE 10
+   END
+END
+
+END
+
+#http://localhost/bsi21/template/web12_iniciar.html

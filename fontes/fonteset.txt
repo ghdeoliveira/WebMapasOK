@@ -1,0 +1,4 @@
+Arial /usr/share/fonts/truetype/freefont/FreeMono.ttf
+Arialbd /usr/share/fonts/truetype/freefont/FreeMonoBold.ttf
+Dejavu /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf
+Dejavubd /usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf

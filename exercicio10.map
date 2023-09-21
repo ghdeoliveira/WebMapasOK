@@ -1,0 +1,84 @@
+#####################################################################
+# INSTITUTO FEDERAL CATARINENSE - CAMPUS Camboriú
+# Bacharelado em Sistemas de Informação
+# Disciplina: Programação Avançada em WebMapas
+# Doscente: André Fabiano de Moraes
+# Discente: Gabriel Henrique de Oliveira
+# Data: 01/09/2023
+#####################################################################
+# Exercicio 10 - Colocando barra de escala dentro de um mapa.
+#####################################################################
+
+MAP
+   IMAGETYPE JPEG
+   # EXTEND -81.689356 -34.901490 -32.377917 6.231303
+   EXTENT 388107.634400379 5203120.88405952 500896.339019834 5310243.30613897
+   SHAPEPATH /var/www/html/bsi21/data
+   FONTSET /var/www/html/bsi21/fontes/fonteset.txt
+   SIZE 800 600
+
+   WEB
+      IMAGEPATH "/var/www/html/tmp/ms_tmp"
+      IMAGEURL "/tmp/ms_tmp"
+      TEMPLATE /var/www/html/bsi21/template/web09_template.html
+   END
+
+PROJECTION
+   "init=epsg:26915"
+END
+
+SCALEBAR
+   LABEL
+      COLOR 0 0 0
+      ANTIALIAS TRUE
+      SIZE small
+   END
+   POSITION lr
+   INTERVALS 2
+   STATUS embed
+
+   SIZE 200 5
+   STYLE 0
+   UNITS meters
+   BACKGROUNDCOLOR 255 0 0
+   COLOR 128 128 128
+   OUTLINECOLOR 0 0 255
+   TRANSPARENT ON
+END
+
+######## Primeira Camada Raster ##### Área de Cobertura
+   LAYER
+      NAME drgncimq1942
+      DATA drgncimq1942.tif
+      STATUS ON 
+      TYPE RASTER
+      OFFSITE 0 0 0
+      PROCESSING "BANDS=1"
+
+      PROJECTION
+         "init=epsg:26915"
+      END
+   END
+
+######### Segunda Camada ##### Área de Cobertura
+   LAYER
+      NAME ctybdpy2
+      TYPE polygon
+      DATA ctybdpy2
+      STATUS default
+      TRANSPARENCY 30
+
+      CLASS
+         NAME "workshop"
+         COLOR 255 127 0
+         OUTLINECOLOR 255 255 255
+         STYLE
+            #COLOR "#EEE8AA"
+            OUTLINECOLOR "#454545"
+            WIDTH 9.5
+         END
+      END
+   END
+
+END
+

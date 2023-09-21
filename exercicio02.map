@@ -1,0 +1,45 @@
+#####################################################################
+# INSTITUTO FEDERAL CATARINENSE - CAMPUS Camboriú
+# Bacharelado em Sistemas de Informação
+# Disciplina: Programação Avançada em WebMapas
+# Doscente: André Fabiano de Moraes
+# Discente: Gabriel Henrique de Oliveira
+# Data: 01/09/2023
+####################################################################
+# Exercicio 02 - Implementação de duas camadas no mapfile e legenda.
+####################################################################
+
+MAP
+   # EXTEND -81.689356 -34.901490 -32.377917 6.231303
+   EXTENT 388107.634400379 5203120.88405952 500896.339019834 5310243.30613897
+   SHAPEPATH /var/www/html/bsi21/data
+   SIZE 400 300
+
+######### Primeira Camada ##### Área de Cobertura
+   LAYER
+      NAME ctybdpy2
+      TYPE polygon
+      DATA ctybdpy2
+      STATUS default
+
+      CLASS
+         NAME "workshop"
+         OUTLINECOLOR 0 0 0
+         COLOR 255 255 255
+      END
+   END
+
+######### Segunda Camada ##### Cidades
+   LAYER
+      NAME mcd90py2
+      TYPE polygon
+      DATA mcd90py2
+      STATUS default
+
+      CLASS
+         NAME "Cities & Towns"
+         OUTLINECOLOR 0 0 0
+         COLOR -1 -1 -1
+      END
+   END
+END

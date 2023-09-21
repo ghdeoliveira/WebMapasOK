@@ -1,0 +1,29 @@
+<!-- MapServer Template -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8">
+		<title>Modo Browser</title>
+	</head>
+	<body>
+		<h4> Definindo uma interface de usuário: </h4>
+		<form method="GET" action="/cgi-bin/mapserv" name="mapserv">
+			<table>
+				<tr>
+					<th> Mapas: </th>
+				</tr>
+				<tr>
+					<td>
+						<input type="image" name="img" src="[img]" width="[mapwidth]" height="[mapheight]" border="1" alt="this is the map">
+						<input type="hidden" name="map" value="[map]">
+						<input type="hidden" name="imgext" value="[mapext]">
+						<input type="hidden" name="imgxy" value="[center]">
+						<input type="hidden" name="zoom" value="1">
+                        <input type="hidden" name="mode" value="browse">
+					</td>
+				</tr>
+			</table>
+		</form>
+	</body>
+</html>
+
